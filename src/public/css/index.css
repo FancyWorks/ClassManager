@@ -1,0 +1,23 @@
+* {
+    outline: none;
+}
+.btn:focus{
+    outline: none;
+}
+
+.k-pic-item {
+    /*border: 1px solid #eee;*/
+    text-align: center;
+}
+.k-pic-item > div{
+    margin-top:10px;
+    font-size: 18px;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.space-15 {
+    margin-top:15px;
+}

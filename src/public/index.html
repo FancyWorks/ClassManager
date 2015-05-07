@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" ng-controller="indexController">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <title>iplayabc-管理平台</title>
+
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="col-xs-4">
+        <h2 class="text-info">Switch User</h2>
+        <div>
+            <label class="radio" ng-repeat="user in users" ng-click="onClickUser(user)">
+                <input class="radio" type="radio" name="user" ng-checked="$first"> <span ng-bind="user.username"></span>
+            </label>
+        </div>
+    </div>
+    <div class="col-xs-8">
+        <h2 class="text-info">Upload new pair of [Image & Word]</h2>
+        <h3>New :</h3>
+        <table>
+            <tr>
+                <td>Image: </td>
+                <td></td>
+                <td>Word: </td>
+            </tr>
+            <tr>
+                <td>
+                    <div ngf-drop ngf-select ng-model="files" class="drop-box"
+                         ngf-drag-over-class="dragover" ngf-multiple="false" ngf-allow-dir="false"
+                         accept="image/*">Click or Drop images</div>
+                    <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+                </td>
+                <td style="width:220px;">
+                    <img style="width:100px;height:100px;margin-left:20px;" ngf-src="files[0]" ng-show="files[0].type.indexOf('image') > -1">
+                </td>
+                <td>
+                    <div><input type="text" ng-model="wordPair.text"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="space-15"></div>
+        <div class="">
+            <button class="btn btn-info btn-sm" ng-click="onSubmit()">Submit</button>
+        </div>
+        <h3 class="">Words</h3>
+        <div class="col-xs-3 k-pic-item" ng-repeat="item in words">
+            <img width="100" height="100" ng-src="{{item.pic_url}}">
+            <div ng-bind="item.text"></div>
+        </div>
+        <!--{{log}}-->
+    </div>
+</div>
+
+<script src="js/lib/jquery-1.10.2.min.js"></script>
+<script src="js/lib/ng-1.3.15/angular.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+
+<!--<script src="js/lib/ng-file-upload-shim.min.js"></script>-->
+<script src="js/lib/ng-file-upload.js"></script>
+
+<script>
+    var app = angular.module("app_main", ['ngFileUpload']);
+</script>
+<!--<script src="js/config.js"></script>-->
+<script src="js/service.js"></script>
+<script src="js/filter.js"></script>
+<script src="js/directive.js"></script>
+<script src="js/global_func.js"></script>
+<script src="js/util.js"></script>
+
+<script src="js/indexController.js"></script>
+<script>
+    angular.bootstrap(window.document, ["app_main"]);
+</script>
+</body>
+</html>

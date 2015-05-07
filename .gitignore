@@ -1,0 +1,10 @@
+.project
+src/node_modules
+
+src/server/data
+src/server/logs
+
+src/public/data
+*.log
+.idea/*
+*.map
